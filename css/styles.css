@@ -979,10 +979,11 @@ html { font-size: 19px; }
 /* Small laptops / tablets landscape: hamburger menu */
 @media (max-width: 1100px) {
 .menu-toggle { display: block; z-index: 2; }
-.nav { position: fixed; inset: 0; z-index: 1; flex-direction: column; align-items: stretch; gap: .2rem; padding: calc(96px + env(safe-area-inset-top)) max(6%, calc(env(safe-area-inset-right) + 1rem)) calc(2rem + env(safe-area-inset-bottom)) max(6%, calc(env(safe-area-inset-left) + 1rem)); background: var(--bg); overflow-y: auto; opacity: 0; visibility: hidden; clip-path: circle(0 at calc(100% - 44px) 44px); transition: clip-path .6s var(--ease), opacity .3s, visibility .6s; }
+.nav { position: fixed; inset: 0; z-index: 1; flex-direction: column; align-items: stretch; gap: .2rem; padding: calc(96px + env(safe-area-inset-top)) max(6%, calc(env(safe-area-inset-right) + 1rem)) calc(2rem + env(safe-area-inset-bottom)) max(6%, calc(env(safe-area-inset-left) + 1rem)); background: var(--bg); overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; opacity: 0; visibility: hidden; clip-path: circle(0 at calc(100% - 44px) 44px); transition: clip-path .6s var(--ease), opacity .3s, visibility .6s; }
 .nav.open { opacity: 1; visibility: visible; clip-path: circle(150% at calc(100% - 44px) 44px); }
-.nav > a, .header.scrolled .nav > a { color: var(--ink); font-family: var(--head); font-size: clamp(1.4rem, 4.5vw, 2rem); font-weight: 700; padding: .7rem .4rem; border-radius: 12px; border-bottom: 1px solid var(--line); opacity: 0; transform: translateY(16px); transition: opacity .4s, transform .4s var(--ease), background .2s, color .2s; }
-.nav.open > a { opacity: 1; transform: none; transition-delay: calc(.12s + var(--i) * .04s); }
+.nav > a { color: var(--ink); font-family: var(--head); font-size: clamp(1.4rem, 4.5vw, 2rem); font-weight: 700; padding: .7rem .4rem; border-radius: 12px; border-bottom: 1px solid var(--line); opacity: 1; transform: translateY(16px); transition: transform .4s var(--ease), background .2s, color .2s; }
+.nav.open > a { transform: none; transition-delay: calc(.12s + var(--i) * .04s); }
+.header.menu-open .nav > a { color: var(--ink); }
 .nav > a.active, .header.scrolled .nav > a.active { color: var(--blue); background: none; }
 .nav-mobile-cta { display: flex; gap: .7rem; margin-top: 1.6rem; }
 .nav-mobile-cta .btn { flex: 1; }
