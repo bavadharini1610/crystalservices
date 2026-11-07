@@ -140,15 +140,21 @@ $$(".counter").forEach((c) => counterIO.observe(c));
 function initTabs(tablist, onChange) {
 const tabs = $$("[role='tab']", tablist);
 const select = (tab, focus = false) => {
+let selectedPanel = null;
 tabs.forEach((t) => {
 const on = t === tab;
 t.setAttribute("aria-selected", on);
 t.tabIndex = on ? 0 : -1;
 const panel = document.getElementById(t.getAttribute("aria-controls"));
 if (panel) { panel.hidden = !on; panel.classList.toggle("is-active", on); }
+if (on) selectedPanel = panel;
 });
 if (focus) tab.focus();
 tab.scrollIntoView({ block: "nearest", inline: "nearest", behavior: reduceMotion ? "auto" : "smooth" });
+if (tablist.matches(".svc-tabs") && window.matchMedia("(max-width: 600px)").matches) {
+const serviceInfo = selectedPanel?.querySelector(".svc-info") || selectedPanel;
+requestAnimationFrame(() => serviceInfo?.scrollIntoView({ block: "start", behavior: reduceMotion ? "auto" : "smooth" }));
+}
 onChange?.(tabs.indexOf(tab));
 };
 tabs.forEach((t, i) => {
@@ -509,6 +515,7 @@ wzBack.disabled = pos === 0;
 wzRestart.hidden = pos === 0;
 const isLast = step === LAST;
 wizard.classList.toggle("is-result", isLast);
+wizard.classList.toggle("is-final-step", f[pos + 1] === LAST);
 wzNext.innerHTML = f[pos + 1] === LAST
 ? 'See my estimate <svg class="i"><use href="#i-sparkle"/></svg>'
 : 'Next <svg class="i"><use href="#i-chev-r"/></svg>';

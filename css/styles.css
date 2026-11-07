@@ -1027,24 +1027,28 @@ html { font-size: 19px; }
 
 /* Tablets portrait & large phones */
 @media (max-width: 900px) {
-:root { --mbar-h: 66px; }
+:root { --mbar-h: 60px; }
 .rcard { width: clamp(240px, 40vw, 290px); }
 .float-book, .wa-float { display: none; }
 .mbar { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); position: fixed; left: 0; right: 0; bottom: 0; z-index: 120; height: calc(var(--mbar-h) + env(safe-area-inset-bottom)); padding: 0 max(.4rem, env(safe-area-inset-right)) env(safe-area-inset-bottom) max(.4rem, env(safe-area-inset-left)); background: rgba(255,255,255,.94); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); border-top: 1px solid var(--line); box-shadow: 0 -10px 30px -18px rgba(10,26,47,.35); }
-.mbar a { display: flex; min-width: 0; min-height: 44px; flex-direction: column; align-items: center; justify-content: center; gap: .2rem; font-size: .72rem; font-weight: 700; color: var(--muted); }
-.mbar a .i { width: 22px; height: 22px; }
+.mbar a { display: flex; min-width: 0; min-height: 42px; flex-direction: column; align-items: center; justify-content: center; gap: .12rem; font-size: .7rem; font-weight: 700; color: var(--muted); }
+.mbar a .i { width: 20px; height: 20px; }
 .mbar a:nth-child(2) .i { color: var(--wa); }
-.mbar-cta { margin: .55rem .2rem; border-radius: 14px; background: var(--grad); color: var(--on-brand) !important; box-shadow: 0 10px 20px -10px var(--blue); }
+.mbar-cta { margin: .4rem .18rem; border-radius: 14px; background: var(--grad); color: var(--on-brand) !important; box-shadow: 0 10px 20px -10px var(--blue); }
 .to-top { display: none; }
 .hero { padding: 118px 0 0; }
 .clients-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .client-card { min-height: 130px; }
 .hero-img { object-position: 88% 50%; }
 .hero-inner { grid-template-columns: 1fr; }
+.hero-inner { gap: 1.25rem; }
 .hero-cards { grid-template-columns: minmax(0, 1fr); justify-items: center; }
 .hero-cards .glass-card { width: min(380px, 100%); margin: 0 !important; }
+.hero-cards .glass-card { padding: .85rem 1rem; }
 .hero-text { text-align: center; }
 .hero-sub { margin: 0 auto; }
+.section { padding: 3.5rem 0; }
+.section-head { margin-bottom: 1.75rem; }
 .hero-cta, .hero-trust { justify-content: center; }
 /* Keep the centered copy legible while revealing more of the image below it */
 .hero-bg::after { background: linear-gradient(180deg, rgba(7,11,19,.64) 0%, rgba(7,11,19,.52) 30%, rgba(7,11,19,.36) 62%, rgba(7,11,19,.72) 100%); }
@@ -1096,18 +1100,35 @@ html { scroll-padding-top: 74px; }
 .logo { --lm: 52px; --lt: 1.5rem; gap: .55rem; }
 /* Tagline is too small to read at phone size in the header; the footer keeps it */
 .header .lt-tag { display: none; }
-.hero { padding: 100px 0 0; }
-.hero > .hero-inner { padding-bottom: 2rem; }
-.hs-grid { grid-template-columns: 1fr; gap: .7rem; }
-.hs-card { padding: .85rem 1rem; }
+.svc-tabs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; overflow: visible; scroll-snap-type: none; -webkit-mask-image: none; mask-image: none; padding: .5rem; }
+.svc-tabs button { min-width: 0; min-height: 64px; flex: initial; gap: .5rem; padding: .6rem .55rem; white-space: normal; font-size: .82rem; line-height: 1.2; }
+.svc-tabs button .i { width: 34px; height: 34px; flex: 0 0 34px; padding: 8px; border-radius: 10px; }
+.svc-tabs button span { min-width: 0; }
+.svc-panel .svc-info { scroll-margin-top: calc(82px + env(safe-area-inset-top)); }
+.hero { padding: 90px 0 0; }
+.hero-img { object-position: 82% 50%; }
+.hero > .hero-inner { padding-bottom: 1.25rem; }
+.hero h1 { font-size: clamp(2.05rem, 9.2vw, 2.8rem); line-height: 1.06; margin: .9rem 0 1rem; }
+.hero-sub { font-size: .96rem; line-height: 1.55; max-width: 38ch; }
+.hero-cta { gap: .6rem; margin: 1.25rem 0 1rem; }
+.hs-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .55rem; }
+.hs-card { gap: .55rem; padding: .65rem .7rem; border-radius: 14px; }
+.hs-ico { width: 34px; height: 34px; }
+.hs-ico .i { width: 18px; height: 18px; }
+.hs-txt b { font-size: .82rem; line-height: 1.2; }
+.hs-txt small { font-size: .68rem; line-height: 1.25; }
+.hs-go { display: none; }
 .gc-price { grid-template-columns: minmax(0, 1fr) 96px; }
 .gc-client-list li { font-size: .75rem; }
-.hero h1 { font-size: clamp(2.3rem, 10.5vw, 3.2rem); }
 .rot-word { white-space: normal; }
 .chip-glass { font-size: .78rem; }
-.hero-cta .btn { flex: 1 1 100%; }
-.hero-trust { flex-direction: column; align-items: center; gap: .5rem; }
+.hero-cta .btn { flex: 1 1 calc(50% - .3rem); min-width: 0; min-height: 48px; padding-inline: .65rem; font-size: .84rem; line-height: 1.2; }
+.hero-trust { flex-direction: column; align-items: center; gap: .35rem; font-size: .78rem; }
+.hero-trust li { gap: .45rem; }
+.hero-trust .i { width: 28px; height: 28px; padding: 6px; }
 .hero-cards { grid-template-columns: minmax(0, 1fr); }
+.gc-rating { gap: .65rem; }
+.g-logo { width: 40px; height: 40px; }
 .gc-price strong { font-size: 2rem; }
 .svc-info { padding: 1.4rem; }
 .home-clean-choice { padding: .65rem .5rem; gap: .45rem; }
@@ -1133,6 +1154,9 @@ html { scroll-padding-top: 74px; }
 .q-ico { display: none; }
 .seg label { flex: 1 1 100%; }
 .est-actions .btn { flex: 1 1 100%; }
+.wizard.is-final-step .wz-nav { flex-direction: column; align-items: stretch; gap: .5rem; }
+.wizard.is-final-step .wz-nav-start { justify-content: space-between; gap: .35rem; }
+.wizard.is-final-step .wz-nav > #wzNext { width: 100%; min-width: 0; align-self: stretch; padding-inline: .8rem; white-space: normal; line-height: 1.2; }
 .price-grid { grid-template-columns: 1fr; }
 .price-card.is-featured { order: -1; }
 .custom-quote .btn { width: 100%; }
@@ -1171,6 +1195,8 @@ html { scroll-padding-top: 74px; }
 /* Small phones (320–380px) */
 @media (max-width: 380px) {
 .container { width: 92%; }
+.section { padding: 3rem 0; }
+.section-head { margin-bottom: 1.4rem; }
 .logo { --lm: 44px; --lt: 1.3rem; gap: .5rem; }
 .footer .logo { --lm: 64px; --lt: 1.9rem; }
 .hero-cards .glass-card { padding: 1rem; }
@@ -1181,7 +1207,11 @@ html { scroll-padding-top: 74px; }
 .gc-client-list li { min-height: 46px; gap: .4rem; font-size: .68rem; }
 .gc-client-mark { width: 27px; height: 27px; flex-basis: 27px; border-radius: 8px; font-size: .56rem; }
 .nav-wa { padding: .4rem; }
+.svc-tabs { gap: .4rem; padding: .4rem; }
+.svc-tabs button { min-height: 60px; gap: .4rem; padding: .5rem .45rem; font-size: .76rem; }
+.svc-tabs button .i { width: 30px; height: 30px; flex-basis: 30px; padding: 7px; }
 .hero h1 { font-size: 2.1rem; }
+.hero-cta .btn { flex-basis: 100%; }
 h2 { font-size: 1.75rem; }
 .opt-grid, .addons { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; }
 .opt-grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
