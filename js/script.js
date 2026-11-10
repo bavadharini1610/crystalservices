@@ -735,16 +735,13 @@ choice.classList.toggle("is-selected", selected);
 choice.setAttribute("aria-pressed", String(selected));
 });
 const hasSelection = Boolean(type);
-commercialQuote.setAttribute("aria-disabled", String(!hasSelection));
-commercialQuote.href = hasSelection
-? waLink(`Hi Crystal Services, I would like a commercial cleaning quote for ${type}. Please share the next steps.`)
-: "#";
+commercialQuote.removeAttribute("aria-disabled");
+commercialQuote.href = waLink(hasSelection
+? `Hi Crystal Services, I would like a commercial cleaning quote for ${type}. Please share the next steps.`
+: "Hi Crystal Services, I would like to enquire about your commercial cleaning services. Please share the next steps.");
 }
 commercialChoices.forEach((choice) => choice.addEventListener("click", () => updateCommercialQuote(choice.dataset.commercialType)));
 updateCommercialQuote();
-commercialQuote.addEventListener("click", (event) => {
-if (commercialQuote.getAttribute("aria-disabled") === "true") event.preventDefault();
-});
 $('.svc-panel#p-office .svc-actions a[href="#commercial"]')?.addEventListener("click", () => updateCommercialQuote());
 const applianceChecks = $$(".appliance-select");
 const applianceSummary = $("#applianceEstimateSummary");
